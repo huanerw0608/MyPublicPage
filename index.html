@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +17,23 @@
     <form action="/action" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
-        
-        <input type="hidden" name="csrf-token" value="abc123">
+        <input type="text" id="password" name="password" placeholder="Enter your password" required>
 
+        <input type="hidden" name="csrf-token" value="abc123">
+        <input type="hidden" name="user-pwd" value="password">
+        <button type="submit">Submit</button>
     </form>
-    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            const passwordInput = document.getElementById('password');
+            const hiddenPwd = document.querySelector('input[name="user-pwd"]');
+
+            form.addEventListener('submit', function () {
+                hiddenPwd.value = passwordInput.value;
+            });
+        });
+    </script>
     
 </body>
 </html>
